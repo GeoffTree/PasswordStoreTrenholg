@@ -1,4 +1,9 @@
 package ca.sheridancollege.trenholg.passwordstoretrenholg.databases;
 
-public interface DatabaseAccess {
+import ca.sheridancollege.trenholg.passwordstoretrenholg.beans.PasswordRecord;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface DatabaseAccess extends CrudRepository<PasswordRecord, Long> {
 }
