@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../static/css/main.css" th:href="@{/css/main.css}">
-    <title>Title</title>
+    <title>Index</title>
 </head>
 <body>
 
@@ -11,7 +11,43 @@
     <h1>Hello World!</h1>
 </header>
 
+<main>
 
+    <h2>Add a New Password</h2>
+
+    <form th:action="@{/addRecord}" th:object="${passwordRecord}" method="post">
+        <label>ID:
+            <input type="text" th:field="*{ID}" readonly>
+        </label>
+
+        <label>Title:
+            <input type="text" th:field="*{title}" required>
+        </label>
+
+        <label>Username:
+            <input type="text" th:field="*{username}" required>
+        </label>
+
+        <label>Password:
+            <input type="password" th:field="*{password}" required>
+        </label>
+
+        <label>Url:
+            <input type="text" th:field="*{url}" required>
+        </label>
+
+        <label>Email:
+            <input type="text" th:field="*{email}" required>
+        </label>
+
+        <label>Notes:
+            <input type="text" th:field="*{notes}" required>
+        </label>
+
+        <button type="submit">Add Password</button>
+    </form>
+
+</main>
 
 </body>
 </html>

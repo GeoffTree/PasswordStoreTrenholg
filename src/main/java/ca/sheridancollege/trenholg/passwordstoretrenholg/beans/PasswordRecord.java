@@ -3,6 +3,7 @@ package ca.sheridancollege.trenholg.passwordstoretrenholg.beans;
 import ca.sheridancollege.trenholg.passwordstoretrenholg.utilities.RandomNumberGenerator;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,6 +12,7 @@ import lombok.NonNull;
 import java.util.Random;
 
 @Entity
+@Table(name= "Passwords")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
