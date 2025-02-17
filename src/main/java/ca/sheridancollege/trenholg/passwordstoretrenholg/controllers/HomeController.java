@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -28,7 +29,12 @@ public class HomeController {
     @PostMapping("/addRecord")
     public String addRecord(@ModelAttribute PasswordRecord passwordRecord, Model model) {
         databaseAccess.save(passwordRecord);
-        model.addAttribute("passwordRecord", new PasswordRecord());
+
+        PasswordRecord newPasswordRecord = new PasswordRecord();
+        newPasswordRecord.setID(RandomNumberGenerator.genLongID());
+
+        model.addAttribute("passwordRecord", newPasswordRecord);
+        model.addAttribute("message", "Successfully added password");
         return "Index";
     }
 
@@ -39,7 +45,25 @@ public class HomeController {
         return "viewPasswordRecord"; }
 
     @GetMapping("/search")
-    public String search() { return "searchPasswordRecord"; }
+    public String search(Model model) {
+        return "searchPasswordRecord";
+    }
 
+    @PostMapping("/search")
+    public String search(@RequestParam("title") String title, Model model) {
+        if (title == null || title.trim().isEmpty()) {
+            model.addAttribute("message", "Please enter a title");
+            return "searchPasswordRecord";
+        }
 
+        List<PasswordRecord> results = databaseAccess.findByTitleContainingIgnoreCase(title);
+
+        if (results.isEmpty()) {
+            model.addAttribute("message", "No records found matching the title");
+        } else {
+            model.addAttribute("passwordRecords", results);
+        }
+
+        return "searchPasswordRecord";
+    }
 }

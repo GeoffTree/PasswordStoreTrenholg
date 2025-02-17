@@ -2,10 +2,10 @@ DROP TABLE IF EXISTS Passwords;
 
 CREATE TABLE Passwords (
     ID BIGINT PRIMARY KEY,
-    Title VARCHAR(255),
-    Username VARCHAR(255),
-    Password VARCHAR(255),
-    Url VARCHAR(255),
-    Email VARCHAR(255),
-    Notes VARCHAR(255)
+    title VARCHAR(255),
+    username VARCHAR(255),
+    password VARCHAR(255),
+    url VARCHAR(255),
+    email VARCHAR(255),
+    notes VARCHAR(255)
 );

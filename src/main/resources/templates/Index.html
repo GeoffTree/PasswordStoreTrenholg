@@ -44,8 +44,10 @@
             <input type="text" th:field="*{notes}" required>
         </label>
 
-        <button type="submit">Add Password</button>
+        <button type="submit">Add Record</button>
     </form>
+
+    <p th:if="${message}" th:text="${message}"></p>
 
 </main>
 
